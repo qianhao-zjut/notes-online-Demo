@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        /* 
+    1、通过属性选择器 选择到 带有属性 v-cloak的标签 
+       让他隐藏
+ */
+        
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 2、 让带有插值 语法的   添加 v-cloak 属性 
+         在 数据渲染完场之后，v-cloak 属性会被自动去除，
+         也就是对应的标签会变为可见
+    -->
+        <div v-cloak>{{msg}}</div>
+
+    </div>
+    <div>
+        <input type="button" value="测试 ajax 请求 json 和响应 json" id="testJson"/>
+    </div>
+    <script type="text/javascript" src="js/v.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#testJson").click(function () {
+                $.ajax({
+                    type:"post",
+                    url:"http://localhost:8080/test/testResponseJson",
+                    contentType:"application/json;charset=utf-8",
+                    data:'{"id":1,"name":"test","money":999.0}',
+                    dataType:"json",
+                    success:function(data){
+                        var vm = new Vue({
+                            el: '#app',
+                            data: {
+                                msg: data.id
+                            }
+                        });
+                    }
+                });
+
+            });
+        })
+        /*var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue'
+            }
+        });*/
+    </script>
+</body>
+
+</html>

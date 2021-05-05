@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <link type="text/css" rel="stylesheet" href="css/registerStyle.css"/>
+
+</head>
+<body>
+<form name="register"  id="register" method="post" action="/register" onsubmit="true">
+    <table>
+        <tr>
+            <td>
+                用&nbsp;&nbsp;户&nbsp;名:&nbsp;&nbsp;<input type="text" id="username" name="account" />
+            </td>
+            <td class="right">
+                <span ><p id="un"> </p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:&nbsp;&nbsp;<input type="text" id="name" name="name" />
+            </td>
+            <td class="right">
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:&nbsp;&nbsp;<input id="sex1" value="男" checked type="radio" name="sex"/>男<input value="女" id="sex2" type="radio" name="sex">女
+            </td>
+            <td class="right">
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                设置密码:&nbsp;&nbsp;<input type="password" id="password1" name="password"/>
+            </td>
+            <td class="right">
+                <span><p id="p1"> </p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                确认密码:&nbsp;&nbsp;<input type="password" id="password2"/>
+            </td>
+            <td class="right">
+                <span><p id="p2"> </p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                手&nbsp;&nbsp;机&nbsp;号:&nbsp;&nbsp;<input type="text" id="phone" name="phone"/>
+            </td>
+            <td class="right">
+                <span><p id="ph"> </p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                验&nbsp;&nbsp;证&nbsp;码:&nbsp;&nbsp;<input type="text" id="validate"><label id="valimg"> </label>
+            </td>
+            <td class="right">
+                <span><p id="vd"> </p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;<input type="text" id="mail" name="email"/>
+            </td>
+            <td class="right">
+                <span><p id="ma"> </p></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="submit" type="submit" value="提交"/>&nbsp;&nbsp;&nbsp;&nbsp;<input id="reset" type="reset" value="重置">
+            </td>
+            <td class="right">
+
+            </td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript" src="js/registerScript.js"></script>
+
+</body>
+</html>

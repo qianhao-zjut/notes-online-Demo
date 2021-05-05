@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识点详情</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css" >
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link rel="stylesheet" href="css/lobbyStyle.css">
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<body onload="query()">
+    <!--导航-->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui teal header item">notes-online</h2>
+                <a href="lobby.html" class="m-item item m-mobile-hide"><i class="home icon"></i>大厅</a>
+                <a href="upload.html" class="m-item item m-mobile-hide"><i class="idea icon"></i>上传</a>
+                <a href="teach.html" class="m-item item m-mobile-hide"><i class="tags icon"></i>使用教程</a>
+                <a href="myNotes.html" class="m-item item m-mobile-hide"><i class="info icon"></i>我的知识点</a>
+                <div class="m-item  right item m-mobile-hide">
+                    <div class="ui icon input">
+                        <input type="text"placeholder="Search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-top-right m-hide">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <!--中间-->
+    <div class="m-padded-tb-max m-container-small" >
+        <div class="ui container">
+            <div id="knowledge">
+                <div class="ui top attached segment">
+                    <div class="ui horizontal link list">
+                        <div class="item">
+                            <img src="image/pic1.png" alt="" class="ui avatar image">
+                            <div class="content"><a href="#" class="header">{{uid}}</a></div>
+                        </div>
+                        <div class="item">
+                            <i class="calendar icon"></i>发布时间:{{k_time}}
+                        </div>
+                        <div class="item">
+                            <i class="eye icon"></i>复习次数:{{k_count}}
+                        </div>
+                    </div>
+                </div>
+                <div class="ui attached segment">
+                    <!--pic-->
+                    <img src="images/pic2.jpg" alt="" class="ui fluid image img-size">
+                </div>
+                <div class="ui attached m-padded-tb-max segment">
+                    <!--context-->
+                    <div class="ui right aligned basic segment">
+                        <div class="ui orange basic label">原创</div>
+                    </div>
+                    <h2 class="ui center aligned  header">{{k_name}}</h2>
+                    <br>
+                    <br>
+                    <br>
+                    <div id="content" class="m-padded-lr m-padded-tb-max">
+                        <p v-html="k_content"></p>
+                    </div>
+                    <!--标签-->
+                    <div class="m-padded-lr">
+                        <div class="ui basic teal label">自我认识</div>
+                    </div>
+                    <!--打赏-->
+                    <div class="ui center aligned basic segment">
+                        <button class="ui basic orange circular button" onclick="k_countAdd()">复习+1</button>
+                    </div>
+                </div>
+            </div>
+            <div id="comment-container" class="ui bottom attached segment">
+                <!--留言区域列表-->
+                <div class="ui teal segment">
+                    <div class="ui threaded comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="image/pic1.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">匿名用户</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="image/pic2.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">匿名用户</a>
+                                <div class="metadata">
+                                    <span class="date">Yesterday at 12:30AM</span>
+                                </div>
+                                <div class="text">
+                                    <p>This has been very useful for my research. Thanks as well!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="image/pic2.jpg">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">匿名用户 Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">Just now</span>
+                                        </div>
+                                        <div class="text">
+                                            Elliot you are always so right :)
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="image/pic1.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">匿名用户</a>
+                                <div class="metadata">
+                                    <span class="date">5 days ago</span>
+                                </div>
+                                <div class="text">
+                                    Dude, this is awesome. Thanks so much
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="field">
+                        <textarea name="comment" placeholder="请输入..." rows="10"></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field">
+                            <input type="text" name="nickname" placeholder="姓名">
+                        </div>
+                        <div class="field">
+                            <input type="text" name="email" placeholder="邮箱">
+                        </div>
+                        <div class="field">
+                            <button class="ui basic orange button">发布</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <footer class="ui inverted vertical segment m-padded-tb-max">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="image/wechat.jpg" class="ui rounded image" alt=""style="width: 100px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <h5 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h5>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">人生导师(my story)</a>
+                        <a href="#" class="item">心灵鸡汤(my video)</a>
+                        <a href="#" class="item">自我认知(my feel)</a>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <h5 class="ui inverted header m-text-thin m-text-spaced ">个人信息</h5>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">WeChat:Yi-0802</a>
+                        <a href="#" class="item">QQ:1692774581</a>
+                    </div>
+                </div>
+                <div class="five wide column">
+                    <h5 class="ui inverted header m-text-thin m-text-spaced ">博客</h5>
+                    <p class="m-text-thin m-text-spaced m-opacity-tiny">这是我的个人博客，会定期分享我的故事,我对于自身的认识，希望可以给看我博客的人带来快乐</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 - 2020 Rownn Designed by Rownn</p>
+        </div>
+    </footer>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/v.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide')
+        })
+        function query() {
+            queryKData()
+        }
+        //获取当前登陆的用户,当实现评论功能的时候需要用到
+        function queryName() {
+            $.ajax({
+                type:"post",
+                url:"http://localhost:8080/getName",
+                contentType:"application/json;charset=utf-8",
+                //data:'{"id":1,"name":"test","money":999.0}',
+                dataType:"json",
+                success:function(data){/*
+                    var vm = new Vue({
+                        el: '#knowledge',
+                        data: {
+
+
+                        }
+                    });*/
+
+                }
+            });
+        }
+        //获取页面需要展示的数据
+        function queryKData() {
+            $.ajax({
+                type:"post",
+                url:"http://localhost:8080/k_details",
+                contentType:"application/json;charset=utf-8",
+                //data:'{"id":1,"name":"test","money":999.0}',
+                dataType:"json",
+                success:function(data){
+                    var vm = new Vue({
+                        el: '#knowledge',
+                        data: {
+                            uid: data.uid,
+                            k_content: data.k_content,
+                            k_name: data.k_name,
+                            k_time: data.time.substring(0,10),
+                            k_count: data.count
+                        }
+                    });
+
+                }
+            });
+        }
+        // document.onmousedown = function(){
+        //     if(event.button == 2){
+        //         alert("当前页面不能使用右键！");
+        //         return false;
+        //     }
+        // }
+        function k_countAdd() {
+            $.ajax({
+                type:"post",
+                url:"http://localhost:8080/k_countAdd",
+                contentType:"application/json;charset=utf-8",
+                //data:'{"id":1,"name":"test","money":999.0}',
+                dataType:"json",
+                success:function(data){
+                    alert(data.msg)
+
+                }
+            });
+        }
+    </script>
+
+
+
+
+</body>
+</html>

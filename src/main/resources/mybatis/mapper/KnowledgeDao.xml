@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianhao.notesonline.dao.KnowledgeDao">
+    <select id="findById" resultType="com.qianhao.notesonline.beans.Knowledge" parameterType="int">
+        select *
+        from knowledges
+        where k_id=#{id}
+    </select>
+
+    <insert id="insertBatch" keyProperty="k_id" useGeneratedKeys="true">
+        insert into knowledges(uid,k_name,k_content,belong_title,count,time,tags,shared)
+        values
+        <foreach collection="knowledges" item="knowledge" separator=",">
+            (#{knowledge.uid},#{knowledge.k_name},#{knowledge.k_content},#{knowledge.belong_title},#{knowledge.count},#{knowledge.time},#{knowledge.tags},#{knowledge.shared})
+        </foreach>
+    </insert>
+
+    <select id="findByParams" resultType="com.qianhao.notesonline.beans.Knowledge">
+        select * from knowledges
+        <where>
+            <if test="uid != null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="k_name !=null and k_name !=''">
+                and k_name like '%${k_name}%'
+            </if>
+            <if test="tags !=null and tags !=''">
+                and tags like  '%${tags}%'
+            </if>
+        </where>
+    </select>
+
+    <select id="limitQueue" resultType="com.qianhao.notesonline.beans.Knowledge">
+        select *
+        from knowledges
+        <where>
+            <if test="search !=null and search !=''">
+                and k_name like  '%${search}%'
+            </if>
+        </where>
+        limit #{page},7;
+    </select>
+    <update id="k_countAdd" parameterType="int">
+        update knowledges
+        set count = count+1
+        where k_id=#{kid};
+    </update>
+
+</mapper>

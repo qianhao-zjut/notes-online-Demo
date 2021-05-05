@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>1.19学习笔记</title></head>
+<body><h3>1.19学习笔记</h3>
+<h5>1.获取文件的相对路径</h5>
+<pre><code class='language-java' lang='java'>System.getProperty(&quot;user.dir&quot;)
+</code></pre>
+<p><img src="C:\Users\QH\AppData\Roaming\Typora\typora-user-images\image-20210119101028120.png" referrerpolicy="no-referrer" alt="image-20210119101028120"></p>
+<h5>2.使用相对路径</h5>
+<pre><code class='language-java' lang='java'>FileInputStream fileInputStream=new FileInputStream(&quot;Java核心技术2\\src\\io流\\file.txt&quot;);
+</code></pre>
+<h5>3.使用绝对路径</h5>
+<pre><code class='language-java' lang='java'>FileInputStream fileInputStream=new FileInputStream(&quot;D:\\JAVAprogram\\Java核心技术1\\Java核心技术2\\src\\io流\\file.txt&quot;);
+</code></pre>
+<h5>4.从文件中按行读取数据</h5>
+<pre><code class='language-java' lang='java'>/**
+     * 从html中获取String类型的html
+     * @param name  需要获取的html名称，例如,a.html对应 a
+     *              html文件默认存储在resources中
+     * @return      String类型的html
+     */
+    public static String getHtml(String name){
+        String html=&quot;&quot;;
+        try{
+            Scanner in=new Scanner(Path.of(&quot;src\\main\\resources\\resources\\&quot;+name+&quot;.html&quot;));
+            while(in.hasNext()){
+                html+=in.next();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return html;
+    }
+</code></pre>
+<p>&nbsp;</p>
+</body>
+</html>

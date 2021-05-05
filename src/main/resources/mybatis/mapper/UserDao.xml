@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianhao.notesonline.dao.UserDao">
+    <select id="findById" resultType="com.qianhao.notesonline.beans.User" parameterType="int">
+        select *
+        from users
+        where uid=#{id}
+    </select>
+
+    <select id="findByParams" resultType="com.qianhao.notesonline.beans.User">
+        select * from users
+        <where>
+            <if test="account != null and account !=''">
+                and account=#{account}
+            </if>
+            <if test="password != null and password !=''">
+                and password=#{password}
+            </if>
+            <if test="name != null and name !=''">
+                and name=#{name}
+            </if>
+            <if test="headPicture != null and headPicture !=''">
+                and headPicture=#{headPicture}
+            </if>
+            <if test="email != null and email !=''">
+                and email=#{email}
+            </if>
+            <if test="phone != null and phone !=''">
+                and phone=#{phone}
+            </if>
+
+        </where>
+    </select>
+    <insert id="insertUser" parameterType="com.qianhao.notesonline.beans.User">
+        insert into users(account,password,name,headPicture,email,phone,sex)
+        values (#{account},#{password},#{name},#{headPicture},#{email},#{phone},#{sex})
+    </insert>
+</mapper>

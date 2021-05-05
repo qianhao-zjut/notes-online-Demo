@@ -1,0 +1,79 @@
+body{
+    background: url(/images/banner.jpg) no-repeat 20px 100px;
+    background-color: #ee9696;
+    
+    background-size: 50%;
+    margin: 30px;
+    padding: 0;
+}
+input{
+    outline: none;
+}
+form{
+    position: absolute;
+    top: 50%;
+    margin-top: -293px;
+    right: 100px;
+
+    width: 591px;
+    height: 586px;
+}
+p{
+    display: inline;
+    line-height: 27px;
+}
+table{
+    width: 500px;
+    margin: 0 auto;
+}
+td{
+    height: 62.5px;
+}
+td.right{
+    width: 240px;
+}
+#username,#password1,#password2,#phone,#validate,#mail,#name{
+    border-radius: 5px;
+    height: 25px;
+    border: 0;
+}
+#sendMess{
+    background-color: blue;
+    border-radius: 0px 5px 5px 0px;
+}
+#un,#p1,#p2,#ph,#vd,#ma{
+    border-radius: 5px;
+    height: 43px;
+    line-height:1px; 
+    font-size: 12px;
+}
+#validate{
+    width: 85px;
+}
+#valimg{
+    border-radius: 5px;
+    font-size: 14px;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    margin: 4px 15px 0px 0px;
+    margin-left: 5px;
+}
+#submit{
+    margin-left: 100px;
+}
+#submit,#reset{
+    border: 0;
+    background: orange;
+    border-radius: 5px;
+}
+#submit:hover,#reset:hover{
+    background: purple;
+}
+span{
+    height: 27px;
+
+}

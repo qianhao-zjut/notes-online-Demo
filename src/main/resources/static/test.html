@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style type="text/css">
+        /*
+    1、通过属性选择器 选择到 带有属性 v-cloak的标签
+       让他隐藏
+ */
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body onload="queryName()">
+
+
+
+
+<div id="app">
+    <!-- 2、 让带有插值 语法的   添加 v-cloak 属性
+     在 数据渲染完场之后，v-cloak 属性会被自动去除，
+     也就是对应的标签会变为可见
+-->
+    <div v-cloak>{{name}}</div>
+
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/v.js"></script>
+<script type="text/javascript">
+
+    function queryName() {
+        $.ajax({
+            type:"post",
+            url:"http://localhost:8080/ks_data",
+            contentType:"application/json;charset=utf-8",
+            //data:'{"id":1,"name":"test","money":999.0}',
+            dataType:"json",
+            success:function(data){
+                var vm = new Vue({
+                    el: '#app',
+                    data: {
+                        name: data.data.uid
+                    }
+                });
+
+            }
+        });
+    }
+
+    /*$(function () {//异步请求控制器，并将结果展示
+        $("#testJson").click(function () {
+            $.ajax({
+                type:"post",
+                url:"http://localhost:8080/ks_data",
+                contentType:"application/json;charset=utf-8",
+                //data:'{"id":1,"name":"test","money":999.0}',
+                dataType:"json",
+                success:function(data){
+                    var value=data.data;
+                    var vm = new Vue({
+                        el: '#app',
+                        data: {
+                            msg: value,
+                            name:'qh'
+
+                        }
+                    });
+                }
+            });
+
+        });
+    })*/
+
+
+</script>
+
+
+
+</body>
+</html>

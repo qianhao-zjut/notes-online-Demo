@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>uploadfile</title>
+
+<script src="js/jquery.min.js"></script>
+<link type="text/css" href="css/uploadStyle.css" rel="stylesheet" />
+
+</head>
+<body onload="load()">
+
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+<div class="upload">
+	<div class="upload-files">
+		<header>
+			<p>
+				<i class="fa fa-cloud-upload" aria-hidden="true"></i>
+				<span class="up">up</span>
+				<span class="load">load</span>
+			</p>
+		</header>
+		<form action="test/uploadHtml" method="post" enctype="multipart/form-data">
+			<div style="text-align: center;margin-top: 15%">
+				<input type="file" name="file">
+				<input type="submit" value="上传">
+			</div>
+			<div style="text-align: center;margin-top:35%">
+				<p>
+					注：请上传.html文件或者.jpg文件
+				</p>
+			</div>
+		</form>
+
+		<footer>
+			<div class="divider">
+				<span><AR>FILES</AR></span>
+			</div>
+			<div class="list-files">
+				<!--   template   -->
+			</div>
+			<button class="importar">UPDATE FILES</button>
+		</footer>
+	</div>
+</div>
+
+</body>
+</html>

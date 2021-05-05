@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianhao.notesonline.dao.ImageDao">
+    <select id="findById" resultType="com.qianhao.notesonline.beans.Image" parameterType="int">
+        select *
+        from images
+        where i_id=#{id}
+    </select>
+
+
+    <select id="findByParams" resultType="com.qianhao.notesonline.beans.Image">
+        select * from images
+        <where>
+            <if test="uid != null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="i_name != null and i_name !=''">
+                and i_name=#{i_name}
+            </if>
+
+        </where>
+    </select>
+    <insert id="insert" parameterType="com.qianhao.notesonline.beans.Image">
+        insert into images(uid,i_name)
+        values (#{uid},#{i_name})
+    </insert>
+</mapper>

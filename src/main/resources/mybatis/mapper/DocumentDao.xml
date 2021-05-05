@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianhao.notesonline.dao.DocumentDao">
+    <select id="findById" resultType="com.qianhao.notesonline.beans.Document" parameterType="int">
+        select *
+        from documents
+        where d_id=#{id}
+    </select>
+
+
+    <select id="findByParams" resultType="com.qianhao.notesonline.beans.Document">
+    select * from documents
+    <where>
+        <if test="uid != null and uid !=''">
+            and uid=#{uid}
+        </if>
+        <if test="d_name != null and d_name !=''">
+            and d_name=#{d_name}
+        </if>
+        <if test="title != null and title !=''">
+            and title=#{title}
+        </if>
+
+    </where>
+    </select>
+    <insert id="insert" parameterType="com.qianhao.notesonline.beans.Document">
+        insert into documents(uid,d_name,title)
+        values (#{uid},#{d_name},#{title})
+    </insert>
+</mapper>
